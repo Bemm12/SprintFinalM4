@@ -17,7 +17,7 @@ public class ClasePrincipal {
             System.out.println("5. Listar Usuarios");
             System.out.println("6. Listar Capacitaciones");
             System.out.println("7. Eliminar Usuario");
-            System.out.println("0. Salir");
+            System.out.println("9. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea

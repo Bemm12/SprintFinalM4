@@ -30,7 +30,7 @@ public class Cliente extends Usuario {
     private int sistemaSalud; // Sistema de salud del cliente (1 para Fonasa, 2 para Isapre)
     private String direccion; // Dirección del cliente
     private String comuna; // Comuna del cliente
-    //private int edad; // Edad del cliente extiende de usuario, fecha de nacimiento.
+    private int edad; // Edad 
 
     // Constructor sin parámetros
     public Cliente() {}
@@ -42,7 +42,7 @@ public class Cliente extends Usuario {
 	 * @param run
 	 */
 	public Cliente(String nombre, String fechaNacimiento, String run, String rut, String nombres, String apellidos, String telefono, 
-            String afp, int sistemaSalud, String direccion, String comuna) {
+            String afp, int sistemaSalud, String direccion, String comuna,int edad) {
 		super(nombre, fechaNacimiento, run);
 		this.rut = rut;
         this.nombres = nombres;
@@ -52,7 +52,7 @@ public class Cliente extends Usuario {
         this.sistemaSalud = sistemaSalud;
         this.direccion = direccion;
         this.comuna = comuna;
-       // this.edad = edad;
+        this.edad = edad;
     }
 
     // Getters y setters para todos los atributos con validaciones
@@ -161,7 +161,7 @@ public class Cliente extends Usuario {
         }
     }
 
-    /**public int getEdad() {
+    public int getEdad() {
         return edad;
     }
 
@@ -171,7 +171,7 @@ public class Cliente extends Usuario {
         } else {
             throw new IllegalArgumentException("La edad debe ser un número entre 0 y 149.");
         }
-    }**/
+    }
 
     // Método obtenerNombre() que retorna el nombre completo del cliente
     public String obtenerNombre() {

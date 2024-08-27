@@ -1,6 +1,18 @@
 package SprintFinalM4;
 
 
+/**
+* Declaración de la clase VisitaTerreno
+*
+*  Cuenta con el método toString() de "VisitaTerreno" para acceder a todos sus datos
+*
+* @author Nicolás Gajardo
+* @author Jorge Lira
+* @author Beatriz Maldonado
+* @author Diego Rivera
+*
+* @version 1.0
+* */
 public class VisitaTerreno {
     // Atributos
     private int idVisita; // Identificador de la visita en terreno

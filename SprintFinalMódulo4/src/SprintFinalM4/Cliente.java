@@ -30,19 +30,14 @@ public class Cliente extends Usuario {
     private int sistemaSalud; // Sistema de salud del cliente (1 para Fonasa, 2 para Isapre)
     private String direccion; // Dirección del cliente
     private String comuna; // Comuna del cliente
-    private int edad; // Edad 
+    //private int edad; // Edad del cliente extiende de usuario, fecha de nacimiento.
 
     // Constructor sin parámetros
     public Cliente() {}
     
     
-    /**
-	 * @param nombre
-	 * @param fechaNacimiento
-	 * @param run
-	 */
 	public Cliente(String nombre, String fechaNacimiento, String run, String rut, String nombres, String apellidos, String telefono, 
-            String afp, int sistemaSalud, String direccion, String comuna,int edad) {
+            String afp, int sistemaSalud, String direccion, String comuna) {
 		super(nombre, fechaNacimiento, run);
 		this.rut = rut;
         this.nombres = nombres;
@@ -52,7 +47,7 @@ public class Cliente extends Usuario {
         this.sistemaSalud = sistemaSalud;
         this.direccion = direccion;
         this.comuna = comuna;
-        this.edad = edad;
+       // this.edad = edad;
     }
 
     // Getters y setters para todos los atributos con validaciones
@@ -68,13 +63,14 @@ public class Cliente extends Usuario {
             throw new IllegalArgumentException("El RUT debe ser menor a 99.999.999.");
         }
     }
+    
 
     public String getNombres() {
         return nombres;
     }
 
     public void setNombres(String nombres) {
-    	if (nombres == null) {
+    	if (nombres == "") {
             throw new IllegalArgumentException("El nombre no puede ser nulo");
         } else if (nombres.length() < 5) {
             throw new IllegalArgumentException("El nombre debe tener al menos 5 caracteres");
@@ -90,7 +86,7 @@ public class Cliente extends Usuario {
     }
 
     public void setApellidos(String apellidos) {
-    	if (apellidos == null) {
+    	if (apellidos == "") {
             throw new IllegalArgumentException("El apellido no puede ser nulo");
         } else if (apellidos.length() < 5) {
             throw new IllegalArgumentException("El apellido debe tener al menos 5 caracteres");
@@ -106,7 +102,7 @@ public class Cliente extends Usuario {
     }
 
     public void setTelefono(String telefono) {
-        if (telefono != null && !telefono.isEmpty()) {
+        if (telefono != "" && !telefono.isEmpty()) {
             this.telefono = telefono;
         } else {
             throw new IllegalArgumentException("El teléfono es obligatorio.");
@@ -161,7 +157,7 @@ public class Cliente extends Usuario {
         }
     }
 
-    public int getEdad() {
+    /**public int getEdad() {
         return edad;
     }
 
@@ -171,7 +167,7 @@ public class Cliente extends Usuario {
         } else {
             throw new IllegalArgumentException("La edad debe ser un número entre 0 y 149.");
         }
-    }
+    }**/
 
     // Método obtenerNombre() que retorna el nombre completo del cliente
     public String obtenerNombre() {
@@ -193,19 +189,11 @@ public class Cliente extends Usuario {
     }
     
 
-    // Método toString() para mostrar todos los detalles del cliente
     @Override
-    public String toString() {
-        return "Cliente{" +
-                "rut='" + rut + '\'' +
-                ", nombres='" + nombres + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", afp='" + afp + '\'' +
-                ", sistemaSalud=" + obtenerSistemaSalud() +
-                ", direccion='" + direccion + '\'' +
-                ", comuna='" + comuna + '\'' +
-                //", edad=" + edad +
-                '}';
-    }
+	public String toString() {
+		return "Cliente [RUT= " + rut + ", Nombres= " + nombres + ", Apellidos= " + apellidos + ", Teléfono= " + telefono
+				+ ", AFP= " + afp + ", Sistema de Salud= " + obtenerSistemaSalud() + ", Dirección= " + direccion + ", Comuna= " + comuna
+				+ ", Usuario Cliente= " + getNombre() + ", Fecha de Nacimiento= " + getFechaNacimiento() + ", RUN= "
+				+ getRun() + ", Edad= " + mostrarEdad() + "]";
+	}
 }

@@ -2,12 +2,37 @@ package SprintFinalM4;
 
 import java.util.Scanner;
 
+import java.util.Scanner;
+
+/**
+* Clase Principal
+*
+* Cuenta con un menú desplegable para todas las acciones:
+* 
+* - Almacenar cliente
+* - Almacenar profesional
+* - Almacenar administrativo
+* - Almacenar capacitación
+* - Eliminar usuario
+* - Listar usuarios
+* - Listar usuarios por tipo
+* - Listar capacitaciones
+* - Salir
+*
+* @author Nicolás Gajardo
+* @author Jorge Lira
+* @author Beatriz Maldonado
+* @author Diego Rivera
+*
+* @version 1.0
+* */
 public class ClasePrincipal {
 	public static void main(String[] args) {
 		Contenedor contenedor = new Contenedor();
 		Scanner scanner = new Scanner(System.in);
 		int opcion;
 		do {
+			System.out.println("----------------------------");
 			System.out.println("1. Almacenar Cliente");
 			System.out.println("2. Almacenar Profesional");
 			System.out.println("3. Almacenar Administrativo");
@@ -18,6 +43,7 @@ public class ClasePrincipal {
 			System.out.println("8. Eliminar Usuario");
 			System.out.println("0. Salir");
 			System.out.print("Seleccione una opción: ");
+			System.out.println("\n----------------------------");
 			opcion = scanner.nextInt();
 			scanner.nextLine(); // Consumir la nueva línea
 			switch (opcion) {
@@ -31,7 +57,7 @@ public class ClasePrincipal {
 						cliente.setNombre(nombre);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				while (true) {
@@ -41,7 +67,7 @@ public class ClasePrincipal {
 						cliente.setFechaNacimiento(fechaNacimiento);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				while (true) {
@@ -51,7 +77,7 @@ public class ClasePrincipal {
 						cliente.setRun(run);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				while (true) {
@@ -61,7 +87,7 @@ public class ClasePrincipal {
 						cliente.setRut(rut);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				while (true) {
@@ -88,7 +114,7 @@ public class ClasePrincipal {
 				}
 				while (true) {
 					try {
-						System.out.print("Ingrese el teléfono del Cliente (Campo obligaotrio):  ");
+						System.out.print("Ingrese el teléfono del Cliente (Campo obligatorio):  ");
 						String telefono = scanner.nextLine();
 						cliente.setTelefono(telefono);
 						break;
@@ -146,11 +172,11 @@ public class ClasePrincipal {
 				while (true) {
 					try {
 						System.out.print("Ingrese el RUT del profesional: ");
-						String rut = scanner.nextLine();
-						profesional.setRun(rut);
+						String run = scanner.nextLine();
+						profesional.setRun(run);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("RUT inválido. Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				while (true) {
@@ -160,7 +186,7 @@ public class ClasePrincipal {
 						profesional.setNombre(nombre);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("Nombre inválido. Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				while (true) {
@@ -193,12 +219,12 @@ public class ClasePrincipal {
 				// Validar y establecer el nombre
 				while (true) {
 					try {
-						System.out.print("Ingrese el RUT del administrativo: ");
-						String rut = scanner.nextLine();
-						administrativo.setRun(rut);
+						System.out.print("Ingrese el RUN del administrativo: ");
+						String run = scanner.nextLine();
+						administrativo.setRun(run);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("RUT inválido. Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				while (true) {
@@ -208,7 +234,7 @@ public class ClasePrincipal {
 						administrativo.setNombre(nombre);
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("Nombre inválido. Inténtelo nuevamente.");
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
 					}
 				}
 				// Validar y establecer el area del administrativo
@@ -266,7 +292,7 @@ public class ClasePrincipal {
 				// Validar y establecer el día de la capacitación
 				while (true) {
 					try {
-						System.out.print("Ingrese el día de la capacitación: ");
+						System.out.print("Ingrese el día de la capacitación (Día de la semana): ");
 						String dia = scanner.nextLine();
 						capacitacion.setDia(dia);
 						break;
@@ -299,7 +325,7 @@ public class ClasePrincipal {
 				// Validar y establecer la duración de la capacitación
 				while (true) {
 					try {
-						System.out.print("Ingrese la duración de la capacitación (en horas): ");
+						System.out.print("Ingrese la duración de la capacitación (en minutos): ");
 						String duracion = scanner.nextLine();
 						capacitacion.setDuracion(duracion);
 						// scanner.nextLine(); // Consumir la nueva línea
@@ -322,6 +348,81 @@ public class ClasePrincipal {
 				}
 				// Almacenar la capacitación
 				contenedor.almacenarCapacitacion(capacitacion);
+				break;
+
+			case 20: // Modificar numero
+				Accidente accidente = new Accidente();
+				while (true) {
+					try {
+						System.out.println("Ingrese el Identificador del accidente:");
+						int idAccidente = scanner.nextInt();
+						accidente.setIdentificador(idAccidente);
+						scanner.nextLine();
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
+					}
+				}
+				while (true) {
+					try {
+						System.out.println("Ingrese el RUT del cliente:");
+						String rutCliente = scanner.nextLine();
+						accidente.setRutCliente(rutCliente);
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
+					}
+				}
+				while (true) {
+					try {
+						System.out.println("Ingrese el día del accidente:");
+						String diaAccidente = scanner.nextLine();
+						accidente.setDia(diaAccidente);
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
+					}
+				}
+				while (true) {
+					try {
+						System.out.println("Ingrese la hora del accidente:");
+						String horaAccidente = scanner.nextLine();
+						accidente.setHora(horaAccidente);
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
+					}
+				}
+				while (true) {
+					try {
+						System.out.println("Ingrese el lugar del accidente:");
+						String lugarAccidente = scanner.nextLine();
+						accidente.setLugar(lugarAccidente);
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
+					}
+				}
+				while (true) {
+					try {
+						System.out.println("Ingrese el origen del accidente:");
+						String origenAccidente = scanner.nextLine();
+						accidente.setOrigen(origenAccidente);
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
+					}
+				}
+				while (true) {
+					try {
+						System.out.println("Ingrese las consecuencias del accidente:");
+						String consecuenciasAccidente = scanner.nextLine();
+						accidente.setConsecuencias(consecuenciasAccidente);
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println(e.getMessage() + " Inténtelo nuevamente.");
+					}
+				}
 				break;
 			case 5:
 				contenedor.listarUsuarios();
@@ -346,10 +447,8 @@ public class ClasePrincipal {
 					break;
 				default:
 					System.out.println("Ocurrió un error el tipo de usuario no es válido. Intente nuevamente");
-					break;
 				}
 				break;
-
 			case 7:
 				contenedor.listarCapacitaciones();
 				break;

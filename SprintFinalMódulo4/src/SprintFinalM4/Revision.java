@@ -12,7 +12,6 @@ package SprintFinalM4;
  * 
  * @version 1.0
  * */
-
 public class Revision {
 	private int idRevision; // Identificador de la revisión
 	private int idVisitaTerreno; // Identificador de la visita en terreno

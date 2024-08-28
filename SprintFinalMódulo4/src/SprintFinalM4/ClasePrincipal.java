@@ -32,7 +32,8 @@ public class ClasePrincipal {
 		Scanner scanner = new Scanner(System.in);
 		int opcion;
 		do {
-			System.out.println("----------------------------");
+			System.out.println("\n----------------------------");
+			System.out.println("---Menú Principal---");
 			System.out.println("1. Almacenar Cliente");
 			System.out.println("2. Almacenar Profesional");
 			System.out.println("3. Almacenar Administrativo");
@@ -456,6 +457,7 @@ public class ClasePrincipal {
 				System.out.print("Ingrese el RUT del usuario a eliminar: ");
 				String rut = scanner.nextLine();
 				contenedor.eliminarUsuario(rut);
+				System.out.print("\nEl usuario de RUT " + rut + " ha sido eliminado.");
 				break;
 			case 0:
 				System.out.println("Saliendo...");
